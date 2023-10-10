@@ -18,6 +18,9 @@
         <% else %>
           <%= render 'customer/header' %>
         <% end %>
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          ログアウト
+        <% end %>
 
     </header>
     <%= yield %>
