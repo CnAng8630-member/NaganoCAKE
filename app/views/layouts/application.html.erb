@@ -18,10 +18,35 @@
         <% else %>
           <%= render 'customer/header' %>
         <% end %>
-        <%= link_to destroy_admin_session_path, method: :delete do %>
-          ログアウト
-        <% end %>
-
+        <li>
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            ログアウト
+          <% end %>
+        </li>
+      <% elsif customer_signed_in? %>
+        <li>
+          <%= link_to destroy_customer_session_path, method: :delete do %>
+            ログアウト
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          About
+        </li>
+        <li>
+          商品一覧
+        </li>
+        <li>
+          <%= link_to new_customer_registration_path do %>
+            新規登録
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_customer_session_path do %>
+            ログイン
+          <% end %>
+        </li>
+      <% end %>
     </header>
     <%= yield %>
   </body>
