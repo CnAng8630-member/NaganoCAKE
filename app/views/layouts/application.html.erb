@@ -31,10 +31,14 @@
         </li>
       <% else %>
         <li>
-          About
+          <%= link_to about_path do %>
+            About
+          <% end %>
         </li>
         <li>
-          商品一覧
+          <%= link_to items_path do %>
+            商品一覧
+          <% end %>
         </li>
         <li>
           <%= link_to new_customer_registration_path do %>
