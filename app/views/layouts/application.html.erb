@@ -13,11 +13,6 @@
   <body>
     <header>
       <% if admin_signed_in? %>
-        <% if request.fullpath.include? "/admin" %>
-          <%= render 'admin/header' %>
-        <% else %>
-          <%= render 'customer/header' %>
-        <% end %>
         <li>
           <%= link_to destroy_admin_session_path, method: :delete do %>
             ログアウト
