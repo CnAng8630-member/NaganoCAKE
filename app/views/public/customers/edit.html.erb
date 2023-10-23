@@ -2,24 +2,24 @@
 
 <%= form_with model: @customer, url: customers_information_path do |f| %>
   <p>氏名</p>
-  <%= f.text_field :last_name %>
-  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name, placeholder:"令和" %>
+  <%= f.text_field :first_name, placeholder:"道子" %>
 
   <p>フリガナ</p>
-  <%= f.text_field :last_name_kana %>
-  <%= f.text_field :first_name_kana %>
+  <%= f.text_field :last_name_kana, placeholder:"レイワ" %>
+  <%= f.text_field :first_name_kana, placeholder:"ミチコ" %>
 
   <p>郵便番号</p>
-  <%= f.text_field :postal_code %>
+  <%= f.text_field :postal_code, placeholder:"0000000" %>
 
   <p>住所</p>
-  <%= f.text_field :address, size: 50 %>
+  <%= f.text_field :address, size: 50, placeholder:"東京都渋谷区代々木神園町0-0" %>
 
   <p>電話番号</p>
-  <%= f.text_field :telephone_number %>
+  <%= f.text_field :telephone_number, placeholder:"0000000000" %>
 
   <p>メールアドレス</p>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, placeholder:"sample@example.com" %>
 
   <%= f.submit "編集内容を保存" %>
 
