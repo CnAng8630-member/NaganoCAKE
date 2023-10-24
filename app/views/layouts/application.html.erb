@@ -34,6 +34,9 @@
           <% end %>
         </li>
       <% elsif customer_signed_in? %>
+        <p>
+          ようこそ、<%= current_customer.last_name %>さん！
+        </p>
         <li>
           <%= link_to customers_mypage_path do %>
             マイページ
