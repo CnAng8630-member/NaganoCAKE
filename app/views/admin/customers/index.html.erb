@@ -1,1 +1,24 @@
-<h1>会員一覧ページ</h1>
+<h3>会員一覧</h3>
+
+<div>
+  <p>会員ID</p>
+  <p>氏名</p>
+  <p>メールアドレス</p>
+  <p>ステータス</p>
+
+  <% @customers.each do |customer| %>
+    <div>
+      <p><%= customer.id %></p>
+
+      <%= link_to admin_customer_path(customer.id) do %>
+        <p><%= customer.last_name %><%= customer.first_name %></p>
+      <% end %>
+
+      <p><%= customer.email %></p>
+
+      <p><%= customer.is_active ? "有効" : "退会" %></p>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @customers %>
