@@ -1,2 +1,43 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました。
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @customer, url: admin_customer_path do |f| %>
+  <p>会員ID</p>
+  <p><%= @customer.id %></p>
+
+  <p>氏名</p>
+  <%= f.text_field :last_name, placeholder:"令和" %>
+  <%= f.text_field :first_name, placeholder:"道子" %>
+
+  <p>フリガナ</p>
+  <%= f.text_field :last_name_kana, placeholder:"レイワ" %>
+  <%= f.text_field :first_name_kana, placeholder:"ミチコ" %>
+
+  <p>郵便番号</p>
+  <%= f.text_field :postal_code, placeholder:"0000000" %>
+
+  <p>住所</p>
+  <%= f.text_field :address, size: 50, placeholder:"東京都渋谷区代々木神園町0-0" %>
+
+  <p>電話番号</p>
+  <%= f.text_field :telephone_number, placeholder:"0000000000" %>
+
+  <p>メールアドレス</p>
+  <%= f.text_field :email, placeholder:"sample@example.com" %>
+
+  <p>会員ステータス</p>
+  <%= f.radio_button :is_active, "true" %>
+  <%= f.label :is_active_true, "有効" %>
+  <%= f.radio_button :is_active, "false" %>
+  <%= f.label :is_active_false, "退会" %>
+
+  <%= f.submit "編集内容を保存" %>
+<% end %>
