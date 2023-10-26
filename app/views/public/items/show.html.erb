@@ -7,7 +7,13 @@
 
   <h3>¥<%= @item.add_tax_price.to_s(:delimited) %></h3>(税込)
 
-  <%= link_to cart_items_path do %>
-    <p>カートに入れる</p>
+  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+
+    <%= f.select :amount, *[1..10] %>
+
+    <%= f.submit "カートに入れる" %>
   <% end %>
 </div>
