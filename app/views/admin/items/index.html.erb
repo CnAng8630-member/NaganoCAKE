@@ -5,22 +5,28 @@
   <% end %>
 </div>
 
-<div>
-  <p>商品ID</p>
-  <p>商品名</p>
-  <p>税抜価格</p>
+<table>
+  <thead>
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税抜価格</th>
+  </thead>
 
-  <% @items.each do |item| %>
-    <div>
-      <p><%= item.id %></p>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
 
-      <%= link_to admin_item_path(item.id) do %>
-        <p><%= item.name %></p>
-      <% end %>
+        <td>
+          <%= link_to admin_item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
+        </td>
 
-      <p><%= item.price %></p>
-    </div>
-  <% end %>
-</div>
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= paginate @items %>

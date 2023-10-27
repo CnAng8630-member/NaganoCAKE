@@ -9,6 +9,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
+    @cart_items = CartItem.all
   end
 
   private
