@@ -8,9 +8,11 @@
   <h3>¥<%= @item.add_tax_price.to_s(:delimited) %></h3>(税込)
 
   <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-    <%= f.hidden_field :item_id, :value => @item.id %>
+    <% if customer_signed_in? %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
 
-    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <% end %>
 
     <%= f.select :amount, *[1..10] %>
 

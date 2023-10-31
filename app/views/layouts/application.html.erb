@@ -12,6 +12,10 @@
 
   <body>
     <header>
+      <%= link_to root_path do %>
+        <h1>ながのCAKE</h1>
+      <% end %>
+
       <% if admin_signed_in? %>
         <li>
           <%= link_to admin_items_path do %>
