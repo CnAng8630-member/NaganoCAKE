@@ -49,18 +49,9 @@
     <%= f.hidden_field :shipping_post_code, :value => @order.shipping_post_code %>
     <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
     <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
-    <%= f.hidden_field :payment_method, :value => @order.payment_method_i18n %>
+    <%= f.hidden_field :payment_method, :value => @order.payment_method %>
     <%= f.hidden_field :item_total_amount, :value => @total %>
     <%= f.hidden_field :postage, :value => @postage %>
-
-    <%= f.fields_for :order_items do |i| %>
-      <% @cart_items.each do |cart_item| %>
-        <%= i.hidden_field :item_id, :value => cart_item.item.id %>
-        <%= i.hidden_field :tax_included_price, :value => cart_item.item.add_tax_price.to_s(:delimited) %>
-        <%= i.hidden_field :amount, :value => cart_item.amount %>
-      <% end %>
-    <% end %>
-
     <%= f.submit "注文を確定する" %>
   <% end %>
 </div>
