@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
     @order.shipping_name = current_customer.last_name + current_customer.first_name
 
     @orders = Order.new
-    @order_item = OrderItem.new
+    @orders.order_items.build
 
     @cart_items = CartItem.all
     @customer = current_customer
@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.save
-    order_item = OrderItem.new(order_item_params)
+    redirect_to complete_orders_path
   end
 
   def complete
@@ -40,10 +40,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :shipping_post_code, :shipping_address, :shipping_name, :payment_method, :item_total_amount, :postage)
-  end
-
-  def order_item_params
-    params.require(:order_item).permit(:item_id, :order_id, :tax_included_price, :amount)
+    params.require(:order).permit(:customer_id, :shipping_post_code, :shipping_address, :shipping_name, :payment_method, :item_total_amount, :postage,
+    order_items_attributes: [:item_id, :order_id, :tax_included_price, :amount])
   end
 end
