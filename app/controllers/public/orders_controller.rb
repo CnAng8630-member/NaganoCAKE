@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
       @order_items = OrderItem.new
       @order_items.item_id = cart_item.item.id
       @order_items.order_id = order.id
-      @order_items.tax_included_price = cart_item.item.add_tax_price.to_s(:delimited)
+      @order_items.tax_included_price = cart_item.item.add_tax_price
       @order_items.amount = cart_item.amount
       @order_items.save!
     end
