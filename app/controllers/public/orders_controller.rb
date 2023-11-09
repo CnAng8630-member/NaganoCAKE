@@ -44,6 +44,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
+    @claim = 0
   end
 
   def show

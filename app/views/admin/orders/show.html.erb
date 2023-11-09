@@ -33,7 +33,6 @@
         <td><%= order_item.tax_included_price.to_s(:delimited) %></td>
         <td><%= order_item.amount %></td>
         <td><%= order_item.subtotal.to_s(:delimited) %></td>
-        <% @total += order_item.subtotal %>
       </tr>
     <% end %>
   </tbody>
@@ -41,12 +40,11 @@
 
 <div>
   <h3>商品合計</h3>
-  <p><%= @total.to_s(:delimited) %>円</p>
+  <p><%= @order.item_total_amount.to_s(:delimited) %>円</p>
 
   <h3>送料</h3>
   <p><%= @order.postage %>円</p>
 
   <h3>請求金額合計</h3>
-  <% @claim = @claim + @total + @order.postage %>
-  <p><%= @claim.to_s(:delimited) %>円</p>
+  <p><%= @order.subtotal.to_s(:delimited) %>円</p>
 </div>
