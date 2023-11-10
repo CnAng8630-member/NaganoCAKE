@@ -22,15 +22,24 @@
 </table>
 
 <div>
-  <p>商品合計</p>
-  <%= @total.to_s(:delimited) %>
+  <table>
+    <thead>
+      <th>送料</th>
+      <th>商品合計</th>
+      <th>請求金額</th>
+    </thead>
 
-  <p>送料</p>
-  <p><%= @postage %></p>
-
-  <p>請求金額</p>
-  <% @claim = @claim + @total + @postage %>
-  <%= @claim.to_s(:delimited) %>
+    <tbody>
+      <tr>
+        <td><%= @postage %></td>
+        <td><%= @total.to_s(:delimited) %></td>
+        <td>
+          <% @claim = @claim + @total + @postage %>
+          <%= @claim.to_s(:delimited) %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div>
@@ -38,7 +47,7 @@
   <p><%= @order.payment_method_i18n %></p>
 
   <h3>お届け先</h3>
-  <p><%= @customer.postal_code %></p>
+  <p>〒<%= @customer.postal_code %></p>
   <p><%= @customer.address %></p>
   <p><%= @customer.last_name %><%= @customer.first_name %></p>
 </div>
