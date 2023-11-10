@@ -5,26 +5,28 @@
   <%= link_to customers_information_edit_path do %>
     編集する
   <% end %>
-</div>
 
-<div>
-  <p>氏名</p>
-  <p><%= @customer.last_name %>　<%= @customer.first_name %></p>
+  <table>
+    <thead>
+      <th>氏名</th>
+      <th>カナ</th>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+    </thead>
 
-  <p>カナ</p>
-  <p><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></p>
-
-  <p>郵便番号</p>
-  <p><%= @customer.postal_code %></p>
-
-  <p>住所</p>
-  <p><%= @customer.address %></p>
-
-  <p>電話番号</p>
-  <p><%= @customer.telephone_number %></p>
-
-  <p>メールアドレス</p>
-  <p><%= @customer.email %></p>
+    <tbody>
+      <tr>
+        <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+        <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+        <td><%= @customer.postal_code %></td>
+        <td><%= @customer.address %></td>
+        <td><%= @customer.telephone_number %></td>
+        <td><%= @customer.email %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div>

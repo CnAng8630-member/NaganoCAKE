@@ -37,8 +37,15 @@
     買い物を続ける
   <% end %>
 
-  <p>合計金額</p>
-  <%= @total.to_s(:delimited) %>
+  <table>
+    <thead>
+      <th>合計金額</th>
+    </thead>
+
+    <tbody>
+      <td><%= @total.to_s(:delimited) %></td>
+    </tbody>
+  </table>
 </div>
 
 <%= link_to new_order_path do %>

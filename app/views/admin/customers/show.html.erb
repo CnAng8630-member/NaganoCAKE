@@ -1,30 +1,30 @@
 <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
 
-<div>
-  <p>会員ID</p>
-  <p><%= @customer.id %></p>
+<table>
+  <thead>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>フリガナ</th>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>電話番号</th>
+    <th>メールアドレス</th>
+    <th>会員ステータス</th>
+  </thead>
 
-  <p>氏名</p>
-  <p><%= @customer.last_name %>　<%= @customer.first_name %></p>
-
-  <p>フリガナ</p>
-  <p><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></p>
-
-  <p>郵便番号</p>
-  <p><%= @customer.postal_code %></p>
-
-  <p>住所</p>
-  <p><%= @customer.address %></p>
-
-  <p>電話番号</p>
-  <p><%= @customer.telephone_number %></p>
-
-  <p>メールアドレス</p>
-  <p><%= @customer.email %></p>
-
-  <p>会員ステータス</p>
-  <p><%= @customer.is_active ? "有効" : "退会" %></p>
-</div>
+  <tbody>
+    <tr>
+      <td><%= @customer.id %></td>
+      <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+      <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+      <td><%= @customer.postal_code %></td>
+      <td><%= @customer.address %></td>
+      <td><%= @customer.telephone_number %></td>
+      <td><%= @customer.email %></td>
+      <td><%= @customer.is_active ? "有効" : "退会" %></td>
+    </tr>
+  </tbody>
+</table>
 
 <div>
   <%= link_to edit_admin_customer_path do %>
