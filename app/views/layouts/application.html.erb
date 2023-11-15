@@ -21,6 +21,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
@@ -95,6 +96,21 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+
+    <main>
+      <div class="pt-3 px-4">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer class="bg-light shadow-sm">
+      <div class="container my-4">
+        <div class="row">
+          <div class="mx-auto">
+            <p>Nagano-CAKE</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
