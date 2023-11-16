@@ -26,68 +26,68 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li class="nav-item p-3 fs-6">
-                  <%= link_to admin_items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    商品一覧
+                  <%= link_to admin_items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:105px" do %>
+                    <small>商品一覧</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to admin_customers_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    会員一覧
+                  <%= link_to admin_customers_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:105px" do %>
+                    <small>会員一覧</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to admin_root_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    注文履歴一覧
+                  <%= link_to admin_root_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:105px" do %>
+                    <small>注文履歴一覧</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    ログアウト
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-secondary text-dark", style: "width:105px" do %>
+                    <small>ログアウト</small>
                   <% end %>
                 </li>
               <% elsif customer_signed_in? %>
-                <p>
-                  ようこそ、<%= current_customer.last_name %>さん！
-                </p>
+                <div class="pt-4 pr-3">
+                  <p>ようこそ、<%= current_customer.last_name %>さん！</p>
+                </div>
                 <li class="nav-item p-3">
-                  <%= link_to customers_mypage_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    マイページ
+                  <%= link_to customers_mypage_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>マイページ</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    商品一覧
+                  <%= link_to items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>商品一覧</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to cart_items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    カート
+                  <%= link_to cart_items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>カート</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    ログアウト
+                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>ログアウト</small>
                   <% end %>
                 </li>
               <% else %>
                 <li class="nav-item p-3">
-                  <%= link_to about_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    About
+                  <%= link_to about_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>About</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    商品一覧
+                  <%= link_to items_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>商品一覧</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to new_customer_registration_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    新規登録
+                  <%= link_to new_customer_registration_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>新規登録</small>
                   <% end %>
                 </li>
                 <li class="nav-item p-3">
-                  <%= link_to new_customer_session_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:80px" do %>
-                    ログイン
+                  <%= link_to new_customer_session_path, class: "nav-link btn btn-outline-secondary text-dark", style: "width:90px" do %>
+                    <small>ログイン</small>
                   <% end %>
                 </li>
               <% end %>
