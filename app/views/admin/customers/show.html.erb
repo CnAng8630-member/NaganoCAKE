@@ -6,33 +6,90 @@
   </div>
 </div>
 
-<table>
-  <thead>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>フリガナ</th>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>電話番号</th>
-    <th>メールアドレス</th>
-    <th>会員ステータス</th>
-  </thead>
+<div class="container">
+  <div class="row ml-5">
+    <div class="col-lg-12">
+    <%= form_with model: @customer, url: admin_customer_path do |f| %>
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>会員ID</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.id %>
+        </div>
+      </div>
 
-  <tbody>
-    <tr>
-      <td><%= @customer.id %></td>
-      <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
-      <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
-      <td><%= @customer.postal_code %></td>
-      <td><%= @customer.address %></td>
-      <td><%= @customer.telephone_number %></td>
-      <td><%= @customer.email %></td>
-      <td><%= @customer.is_active ? "有効" : "退会" %></td>
-    </tr>
-  </tbody>
-</table>
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>氏名</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.last_name %>　<%= @customer.first_name %>
+        </div>
+      </div>
 
-<div>
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>フリガナ</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.last_name_kana %>　<%= @customer.first_name_kana %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>郵便番号</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.postal_code %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>住所</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.address %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>電話番号</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.telephone_number %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>メールアドレス</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <%= @customer.email %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-lg-2 col-form-label">
+          <small>会員ステータス</small>
+        </div>
+        <div class="col-lg-9 mt-2">
+          <% if @customer.is_active %>
+            <strong class="text-success">有効</strong>
+          <% else %>
+            <strong class="text-black-50">退会</strong>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
   <%= link_to edit_admin_customer_path do %>
     編集する
   <% end %>
@@ -40,4 +97,3 @@
   <%= link_to admin_root_path do %>
     注文履歴一覧を見る
   <% end %>
-</div>
