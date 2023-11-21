@@ -1,4 +1,10 @@
-<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+<div class="container">
+  <div class="row my-3 pt-3">
+    <div class="col-lg-3 ml-5">
+      <h4 class="bg-light text-center" style="width:360px"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+    </div>
+  </div>
+</div>
 
 <% if @customer.errors.any? %>
   <%= @customer.errors.count %>件のエラーが発生しました。
@@ -9,35 +15,77 @@
   </ul>
 <% end %>
 
-<%= form_with model: @customer, url: admin_customer_path do |f| %>
-  <p>会員ID</p>
-  <p><%= @customer.id %></p>
+<div class="container">
+  <%= form_with model: @customer, url: admin_customer_path do |f| %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "会員ID" %></div>
+      <div class="col-lg-3 mt-2">
+        <%= @customer.id %>
+      </div>
+    </div>
 
-  <p>氏名</p>
-  <%= f.text_field :last_name, placeholder:"令和" %>
-  <%= f.text_field :first_name, placeholder:"道子" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "氏名" %></div>
+      <div class="col-lg-3">
+        <%= f.text_field :last_name, placeholder:"令和", class:"form-control" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :first_name, placeholder:"道子", class:"form-control" %>
+      </div>
+    </div>
 
-  <p>フリガナ</p>
-  <%= f.text_field :last_name_kana, placeholder:"レイワ" %>
-  <%= f.text_field :first_name_kana, placeholder:"ミチコ" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "フリガナ" %></div>
+      <div class="col-lg-3">
+        <%= f.text_field :last_name_kana, placeholder:"レイワ", class:"form-control" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :first_name_kana, placeholder:"ミチコ", class:"form-control" %>
+      </div>
+    </div>
 
-  <p>郵便番号</p>
-  <%= f.text_field :postal_code, placeholder:"0000000" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "郵便番号" %></div>
+      <div class="col-lg-3">
+        <%= f.text_field :postal_code, placeholder:"0000000", class:"form-control" %>
+      </div>
+    </div>
 
-  <p>住所</p>
-  <%= f.text_field :address, size: 50, placeholder:"東京都渋谷区代々木神園町0-0" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "住所" %></div>
+      <div class="col-lg-8">
+        <%= f.text_field :address, size: 50, placeholder:"東京都渋谷区代々木神園町0-0", class:"form-control" %>
+      </div>
+    </div>
 
-  <p>電話番号</p>
-  <%= f.text_field :telephone_number, placeholder:"0000000000" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "電話番号" %></div>
+      <div class="col-lg-3">
+        <%= f.text_field :telephone_number, placeholder:"0000000000", class:"form-control" %>
+      </div>
+    </div>
 
-  <p>メールアドレス</p>
-  <%= f.text_field :email, placeholder:"sample@example.com" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "メールアドレス" %></div>
+      <div class="col-lg-3">
+        <%= f.text_field :email, placeholder:"sample@example.com", class:"form-control" %>
+      </div>
+    </div>
 
-  <p>会員ステータス</p>
-  <%= f.radio_button :is_active, "true" %>
-  <%= f.label :is_active_true, "有効" %>
-  <%= f.radio_button :is_active, "false" %>
-  <%= f.label :is_active_false, "退会" %>
+    <div class="form-group row">
+      <div class="col-lg-2 col-form-label"><%= f.label "会員ステータス" %></div>
+      <div class="col-lg-1 mt-2 ml-3 custom-control custom-radio custom-control-inline">
+        <%= f.radio_button :is_active, "true", class: "custom-control-input" %>
+        <%= f.label :is_active_true, "有効", class: "custom-control-label" %>
+      </div>
+      <div class="col-lg-1 mt-2 custom-control custom-radio custom-control-inline">
+        <%= f.radio_button :is_active, "false", class: "custom-control-input" %>
+        <%= f.label :is_active_false, "退会", class: "custom-control-label" %>
+      </div>
+    </div>
 
-  <%= f.submit "編集内容を保存" %>
-<% end %>
+    <div class="row justify-content-center mb-4">
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
