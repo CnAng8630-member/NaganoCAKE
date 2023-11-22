@@ -1,58 +1,114 @@
-<h2>注文履歴詳細</h2>
+<div class="container">
+  <div class="row my-3 pt-3">
+    <div class="col-lg-3 ml-5">
+      <h4 class="bg-light text-center" style="width:190px">注文履歴詳細</h4>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <th>購入者</th>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>支払方法</th>
-  </thead>
+<div class="container mb-4">
+  <div class="row ml-5">
+    <div class="col-lg-12">
+      <%= form_with model: @order, url: admin_order_path do |f| %>
+        <div class="form-group row">
+          <div class="col-lg-2 col-form-label">
+            <strong>購入者</strong>
+          </div>
+          <div class="col-lg-9 mt-2">
+            <%= link_to admin_customer_path(@order.customer.id) do %>
+              <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+            <% end %>
+          </div>
+        </div>
 
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to admin_customer_path(@order.customer.id) do %>
-          <%= @order.customer.last_name %> <%= @order.customer.first_name %>
-        <% end %>
-      </td>
-      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-      <td>
-        〒<%= @order.shipping_post_code %><br>
-        <%= @order.shipping_address %><br>
-        <%= @order.shipping_name %>
-      </td>
-      <td><%= @order.payment_method_i18n %></td>
-    </tr>
-  </tbody>
-</table>
+        <div class="form-group row">
+          <div class="col-lg-2 col-form-label">
+            <strong>注文日</strong>
+          </div>
+          <div class="col-lg-9 mt-2">
+            <%= @order.created_at.strftime('%Y/%m/%d') %>
+          </div>
+        </div>
 
-<table>
-  <thead>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-  </thead>
+        <div class="form-group row">
+          <div class="col-lg-2 col-form-label">
+            <strong>配送先</strong>
+          </div>
+          <div class="col-lg-9 mt-2">
+            〒<%= @order.shipping_post_code %> <%= @order.shipping_address %><br>
+            <%= @order.shipping_name %>
+          </div>
+        </div>
 
-  <tbody>
-    <% @order.order_items.each do |order_item| %>
-      <tr>
-        <td><%= order_item.item.name %></td>
-        <td><%= order_item.tax_included_price.to_s(:delimited) %></td>
-        <td><%= order_item.amount %></td>
-        <td><%= order_item.subtotal.to_s(:delimited) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <div class="form-group row">
+          <div class="col-lg-2 col-form-label">
+            <strong>支払方法</strong>
+          </div>
+          <div class="col-lg-9 mt-2">
+            <%= @order.payment_method_i18n %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<div>
-  <h3>商品合計</h3>
-  <p><%= @order.item_total_amount.to_s(:delimited) %>円</p>
+<div class="container">
+  <div class="row d-flex justify-content-center align-items-end">
+    <div class="col-lg-7 mr-5">
+      <table class="table">
+        <thead class="thead-light">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </thead>
 
-  <h3>送料</h3>
-  <p><%= @order.postage %>円</p>
+        <tbody>
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td><%= order_item.item.name %></td>
 
-  <h3>請求金額合計</h3>
-  <p><%= @order.subtotal.to_s(:delimited) %>円</p>
+              <td><%= order_item.tax_included_price.to_s(:delimited) %></td>
+
+              <td><%= order_item.amount %></td>
+
+              <td><%= order_item.subtotal.to_s(:delimited) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-lg-4">
+      <%= form_with model: @order, url: admin_order_path do |f| %>
+        <div class="form-group row">
+          <div class="col-lg-5 col-form-label">
+            <strong>商品合計</strong>
+          </div>
+          <div class="col-lg-4 mt-2 text-right">
+            <%= @order.item_total_amount.to_s(:delimited) %>円
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-5 col-form-label">
+            <strong>送料</strong>
+          </div>
+          <div class="col-lg-4 mt-2 text-right">
+            <%= @order.postage %>円
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-5 col-form-label">
+            <strong>請求金額合計</strong>
+          </div>
+          <div class="col-lg-4 mt-2 text-right">
+            <strong><%= @order.subtotal.to_s(:delimited) %>円</strong>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
