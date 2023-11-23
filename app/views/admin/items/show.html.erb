@@ -13,37 +13,37 @@
     </div>
 
     <div class="col-lg-8">
-    <%= form_with model: @item do |f| %>
-      <div class="form-group row">
-        <div class="col-lg-2 ml-5 col-form-label">
-          <small>商品名</small>
+      <%= form_with model: @item do |f| %>
+        <div class="form-group row">
+          <div class="col-lg-2 ml-5 col-form-label">
+            <small>商品名</small>
+          </div>
+          <div class="col-lg-9 mt-2">
+            <%= @item.name %>
+          </div>
         </div>
-        <div class="col-lg-9 mt-2">
-          <%= @item.name %>
-        </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col-lg-2 ml-5 col-form-label">
-          <small>商品説明</small>
+        <div class="form-group row">
+          <div class="col-lg-2 ml-5 col-form-label">
+            <small>商品説明</small>
+          </div>
+          <div class="col-lg-9 mt-2">
+            <%= @item.introduction %>
+          </div>
         </div>
-        <div class="col-lg-9 mt-2">
-          <%= @item.introduction %>
-        </div>
-      </div>
 
-      <div class="form-group row">
-        <div class="col-lg-2 ml-5 col-form-label">
-          <small>
-            税込価格<br>
-            (税抜価格)
-          </small>
+        <div class="form-group row">
+          <div class="col-lg-2 ml-5 col-form-label">
+            <small>
+              税込価格<br>
+              (税抜価格)
+            </small>
+          </div>
+          <div class="col-lg-9 mt-3">
+            <%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)<small>円</small>
+          </div>
         </div>
-        <div class="col-lg-9 mt-3">
-          <%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)<small>円</small>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
     </div>
   </div>
 </div>

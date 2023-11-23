@@ -1,15 +1,37 @@
-<h2>商品一覧</h2>(全<%= @items.count %>件)
-
-<% @item.each do |item| %>
-  <div>
-    <%= link_to item_path(item.id) do %>
-      <%= image_tag item.get_image(100,100) %>
-
-      <p><%= item.name %></p>
-
-      <p>¥<%= item.add_tax_price.to_s(:delimited) %></p>
-    <% end %>
+<div class="container">
+  <div class="row mt-3 pt-3">
+    <div class="col-lg-5 ml-5 text-center">
+      <h3><strong>商品一覧</strong> <small class="h5">(全<%= @items.count %>件)</small></h3>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= paginate @item %>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="row">
+        <% @item.each do |item| %>
+          <div class="col-lg-3 ">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(100,100) %>
+
+              <p class="text-body"><%= item.name %></p>
+
+              <p class="text-body">¥<%= item.add_tax_price.to_s(:delimited) %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<div class="container my-2">
+  <div class="row">
+    <div class="col-lg-12 mx-auto d-flex justify-content-center">
+      <%= paginate @item %>
+    </div>
+  </div>
+</div>

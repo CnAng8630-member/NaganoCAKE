@@ -1,21 +1,49 @@
-<h2>ログイン</h2>
+<div class="container">
+  <div class="row mt-3 pt-3">
+    <div class="col-lg-3 ml-5">
+      <h4 class="bg-light text-center" style="width:140px">ログイン</h4>
+    </div>
+  </div>
+</div>
 
-<h3>会員の方はこちらからログイン</h3>
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %>
+<div class="container mt-4 mb-5">
+  <div class="row ml-3 mb-3">
+    <div class="col-lg-3 ml-5">
+      <h5 class="bg-light text-center" style="width:320px">会員の方はこちらからログイン</h5>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <div class="form-group row justify-content-center">
+      <div class="col-lg-2 col-form-label"><%= f.label "メールアドレス" %></div>
+      <div class="col-lg-6">
+        <%= f.email_field :email, autocomplete: "email", placeholder:"sample@example.com", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+      <div class="col-lg-2 col-form-label"><%= f.label "パスワード" %></div>
+      <div class="col-lg-6">
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="actions row justify-content-center">
+      <%= f.submit "ログイン", class: "btn btn-primary mt-3" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row ml-3 mb-3">
+    <div class="col-lg-3 ml-5">
+      <h5 class="bg-light text-center" style="width:280px">会員登録がお済みでない方</h5>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="row mb-3">
+    <div class="col-lg-8 text-center">
+      <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+    </div>
   </div>
-<% end %>
-
-<h3>会員登録がお済みでない方</h3>
-<p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
+</div>
