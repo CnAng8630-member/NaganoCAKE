@@ -7,10 +7,15 @@ class Public::CartItemsController < ApplicationController
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.update(amount: cart_item.amount)
+      flash[:notice] = "カートに追加しました。"
+      redirect_to cart_items_path
+    elsif
+      cart_item.save
+      flash[:notice] = "カートに追加しました。"
       redirect_to cart_items_path
     else
-      cart_item.save
-      redirect_to cart_items_path
+      flash[:alert] = "個数を入力してください。"
+      redirect_to item_path(cart_item.item.id)
     end
   end
 
@@ -22,17 +27,20 @@ class Public::CartItemsController < ApplicationController
   def update
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
+    flash[:notice] = "数量を変更しました。"
     redirect_to cart_items_path
   end
 
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
+    flash[:notice] = "削除しました。"
     redirect_to cart_items_path
   end
 
   def destroy_all
     CartItem.destroy_all
+    flash[:notice] = "カートを空にしました。"
     redirect_to cart_items_path
   end
 
