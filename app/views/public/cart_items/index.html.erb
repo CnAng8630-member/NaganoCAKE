@@ -5,7 +5,9 @@
     </div>
 
     <div class="col-lg-6 d-flex justify-content-end">
-      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "カートを空にしますか？", class: "btn btn-danger" %>
+      <%= link_to destroy_all_cart_items_path, method: :delete, "data-confirm" => "カートを空にしますか？", class: "btn btn-danger" do %>
+        カートを空にする
+      <% end %>
     </div>
   </div>
 </div>
@@ -41,7 +43,11 @@
                 <% end %>
               </td>
               <td><%= cart_item.subtotal.to_s(:delimited) %></td>
-              <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
+              <td>
+                <%= link_to cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" do %>
+                  削除する
+                <% end %>
+              </td>
               <% @total += cart_item.subtotal %>
             </tr>
           <% end %>
@@ -71,7 +77,13 @@
 </div>
 
 <div class="container mt-3 mb-4 d-flex justify-content-center">
-  <%= link_to new_order_path, class: "btn btn-success" do %>
-    注文情報入力に進む
+  <% if @cart_items.blank? %>
+    <%= link_to new_order_path, class: "btn btn-success disabled" do %>
+      注文情報入力に進む
+    <% end %>
+  <% else %>
+    <%= link_to new_order_path, class: "btn btn-success" do %>
+      注文情報入力に進む
+    <% end %>
   <% end %>
 </div>
